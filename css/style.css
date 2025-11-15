@@ -1,0 +1,13 @@
+.number-card{
+    top: -60%;
+    left: 30%;
+    border-radius: 50%;
+    width:25px;
+    height:25px;
+    text-align: center;
+}
+
+.image-card{
+    width: 100%;
+    height: 300px;
+}
