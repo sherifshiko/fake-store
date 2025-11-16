@@ -23,7 +23,7 @@ fetch('https://fakestoreapi.com/products')
                         ${price} $
                     </h6>
                     <div class="d-flex justify-content-between p-1">
-                        <a href="" class="text-decoration-none btn btn-primary">View product</a>
+                        <a href="./viewProduct.html?p=${id}" class="text-decoration-none btn btn-primary">View product</a>
                         <button href="#" data-id=${id} class="text-decoration-none btn btn-warning addBtns">add product to card</button>
                     </div>
                 </div>
