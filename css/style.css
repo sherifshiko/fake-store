@@ -14,4 +14,9 @@
 
 .check{
     top: 25%;
+    left: 70%;
+    right: 5%;
+    background-color: tomato;
+    border-radius: 5%;
+    padding: 10px;
 }
