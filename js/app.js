@@ -28,24 +28,21 @@ fetch('https://fakestoreapi.com/products')
                     </div>
                 </div>
             </div>
-        
-        `
+          `
       homeContent.innerHTML = htmlCollection
       let addBtns = document.querySelectorAll(".addBtns");
       for (let addBtn of addBtns) {
         addBtn.addEventListener('click', (e) => {
           let productId = e.target.dataset.id
-          selectedCard.push(productId)
-          sessionStorage.setItem('numberCard', JSON.stringify(selectedCard))
-          console.log(selectedCard.length);
-          
-          let numbersCards = document.getElementById("numbersCards");
-          numbersCards.innerText = selectedCard.length
-
-
+          fetch(`https://fakestoreapi.com/products/${productId}`)
+            .then(response => response.json())
+            .then(product => {
+              selectedCard.push(product)
+              sessionStorage.setItem('numberCard', JSON.stringify(selectedCard))
+              let numbersCards = document.getElementById("numbersCards");
+              numbersCards.innerText = selectedCard.length
+            })
         })
       }
     }
-
-
   });

@@ -1,16 +1,16 @@
 let storedCard = JSON.parse(sessionStorage.getItem('numberCard'));
-let numbersCards=document.getElementById("numbersCards");
-let purchasesContant=document.getElementById("purchasesContant");
-let totalPrice=0;
-numbersCards.innerText=storedCard.length
+let numbersCards = document.getElementById("numbersCards");
+let purchasesContant = document.getElementById("purchasesContant");
+let totalPrice = 0;
+numbersCards.innerText = storedCard.length
 
-for (let element of storedCard) {    
-    fetch(`https://fakestoreapi.com/products/${element}`)
-        .then(response => response.json())
-        .then(product => {
-            totalPrice += product.price
-            let{description,image,title,price}=product
-            purchasesContant.insertAdjacentHTML('beforeend',`
+
+
+
+for (let product of storedCard) {
+    totalPrice += product.price
+    let { description, image, title, price } = product
+    purchasesContant.insertAdjacentHTML('beforeend', `
 
                                 <div class="col-10">
                 <div class="d-flex justify-content-between border border-3 border-light p-5">
@@ -35,7 +35,12 @@ for (let element of storedCard) {
             </div>
                 `)
 
-                purchasesContant.insertAdjacentHTML('beforeend',`
+
+}
+
+
+
+purchasesContant.insertAdjacentHTML('beforeend', `
                                 <div class="col-2 position-relative">
                 <div class="text-white text-center position-fixed check ">
                     <h2>The check</h2>
@@ -51,9 +56,11 @@ for (let element of storedCard) {
                     
                     `)
 
-        });
 
-}
+
+
+
+
 
 
 
