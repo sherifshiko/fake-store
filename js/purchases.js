@@ -2,18 +2,17 @@ let storedCard = JSON.parse(sessionStorage.getItem('numberCard'));
 let numbersCards = document.getElementById("numbersCards");
 let purchasesContant = document.getElementById("purchasesContant");
 let totalPrice = 0;
-let index=-1;
+let index = -1;
 numbersCards.innerText = storedCard.length
 
 
 function creatCards() {
+    let htmlCollection = ``;
     for (let product of storedCard) {
         totalPrice += product.price
         let { description, image, title, price, id } = product
-        index=id
-        purchasesContant.insertAdjacentHTML('beforeend', `
-
-          <div class="col-10">
+        htmlCollection += `
+                <div class="col-3">
                 <div class="d-flex flex-column justify-content-between text-center border border-3 border-light p-5">
                     <div>
                         <img src="${image}" class="w-50" alt="${title}">
@@ -29,21 +28,16 @@ function creatCards() {
                             ${price}$
                         </h3>
                         <h4 class="text-danger">
-                            <button class="btn btn-danger" id="deleteCart"><i class="fa-regular fa-trash-can"></i></button>
+                            <button class="btn btn-danger" onclick="dleteCardFromList(${id})"><i class="fa-regular fa-trash-can"></i></button>
                         </h4>
                     </div>
                 </div>
          </div>
-                `)
+        
+        `
+        purchasesContant.innerHTML = htmlCollection
 
     }
-
-    let deleteCart = document.getElementById("deleteCart");
-    deleteCart.addEventListener('click', () => {
-        storedCard.splice(index, 1)
-    })
-
-
 
 }
 creatCards()
@@ -69,6 +63,16 @@ purchasesContant.insertAdjacentHTML('beforeend', `
 
 
 
+
+function dleteCardFromList(id) {
+    console.log(storedCard);
+
+    storedCard.splice(id-1, 1);
+    console.log(storedCard);
+    
+    creatCards();
+
+}
 
 
 
